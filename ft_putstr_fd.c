@@ -6,11 +6,11 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:55:35 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/22 14:09:26 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:04:27 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

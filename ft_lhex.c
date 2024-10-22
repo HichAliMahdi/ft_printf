@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lhex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:07:39 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/22 15:02:46 by hali-mah         ###   ########.fr       */
+/*   Created: 2024/10/22 15:05:06 by hali-mah          #+#    #+#             */
+/*   Updated: 2024/10/22 15:10:40 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_lhex(unsigned int n)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else if (n >= 0 && n <= 9)
-		ft_putchar_fd((n + '0'), fd);
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd((n * -1), fd);
-	}
-	else if (n >= 0 && n > 9)
-	{
-		ft_putnbr_fd((n / 10), fd);
-		ft_putnbr_fd((n % 10), fd);
-	}
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	if (n >= 16)
+		ft_lhex(n / 16);
+	ft_putchar_fd(hex[n % 16]);
+	return (0);
 }

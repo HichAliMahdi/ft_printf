@@ -6,16 +6,16 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:15:38 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/22 14:22:56 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:04:14 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-int ft_unsnbr(unsigned int n)
+int	ft_unsnbr(unsigned int n)
 {
-    if (n >= 10)
-        ft_unsnbr(n/10);
-    ft_putchar_fd((n%10) + '0');
-    return (0);
+	if (n >= 10)
+		ft_unsnbr(n / 10);
+	ft_putchar_fd((n % 10) + '0');
+	return (0);
 }
