@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_uhex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 12:56:33 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/22 15:52:04 by hali-mah         ###   ########.fr       */
+/*   Created: 2024/10/22 15:23:29 by hali-mah          #+#    #+#             */
+/*   Updated: 2024/10/22 15:52:48 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdio.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-int		ft_lhex(unsigned int n);
-#endif
+int	ft_uhex(unsigned int n, int fd)
+{
+	char	*hex;
+
+	hex = "0123456789ABCDEF";
+	if (n >= 16)
+		ft_uhex(n / 16, fd);
+	ft_putchar_fd(hex[n % 16], fd);
+	return (0);
+}
