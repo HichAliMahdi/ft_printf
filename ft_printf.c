@@ -6,11 +6,13 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:33:38 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/22 15:01:31 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:43:16 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int	ft_printf(const char *format, ...)
 {
-	
+	printf("a");
 }
