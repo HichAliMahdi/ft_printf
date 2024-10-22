@@ -14,7 +14,7 @@
 NAME = libftprintf.a
 
 # Sources files
-SRC = ft_printf.c ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_unsnbr.c
+SRC = ft_printf.c ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_unsnbr.c ft_lhex.c ft_uhex.c ft_putptr.c
 OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
