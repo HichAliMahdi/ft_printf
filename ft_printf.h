@@ -6,7 +6,7 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:56:33 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/23 12:22:55 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:07:08 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <stdarg.h>
 # include <stdlib.h>
 
-int		ft_printf(const char *format, ...);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-int		ft_unsnbr(unsigned int n, int fd);
-int		ft_lhex(unsigned int n, int fd);
-int		ft_uhex(unsigned int n, int fd);
-int		ft_putptr(void *ptr, int fd);
+int	ft_putchar_fd(char c, int fd);
+int	ft_putstr_fd(char *s, int fd);
+int	ft_putnbr_fd(int n, int fd);
+int	ft_unsnbr(unsigned int n, int fd);
+int	ft_lhex(unsigned int n, int fd);
+int	ft_uhex(unsigned int n, int fd);
+int	ft_putptr(void *ptr, int fd);
+int	ft_format(const char format, va_list args, int fd);
+int	ft_printf(const char *format, ...);
 #endif

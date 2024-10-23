@@ -6,20 +6,24 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:55:35 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/23 12:05:18 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:07:47 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	if (s)
+	int	len;
+
+	len = 0;
+	if (!s)
 	{
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			s++;
-		}
+		return (0);
 	}
+	while (s[len])
+	{
+		len += write(fd, &s[len], 1);
+	}
+	return (len);
 }
