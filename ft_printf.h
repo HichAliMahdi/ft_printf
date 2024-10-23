@@ -6,7 +6,7 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:56:33 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/22 18:32:26 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:22:55 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdlib.h>
 
 int		ft_printf(const char *format, ...);
 void	ft_putchar_fd(char c, int fd);
