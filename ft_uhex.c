@@ -6,7 +6,7 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:23:29 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/23 14:20:03 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:44:47 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ int	ft_uhex(unsigned int n, int fd)
 	}
 	write_hex_result(result, n, fd);
 	free(result);
-	return (0);
+	return (len);
 }

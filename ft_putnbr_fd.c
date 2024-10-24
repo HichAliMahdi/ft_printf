@@ -6,7 +6,7 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:07:39 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/23 15:07:54 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:37:06 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	char	buffer[11];
+	char	c;
 	int		len;
 
 	len = 0;
-	if (n < 0)
+	if (n == -2147483648)
 	{
-		len += write(fd, "-", 1);
-		n = -n;
+		len += ft_putstr_fd("-2147483648", fd);
 	}
-	if (n == 0)
+	else
 	{
-		len += write(fd, "0", 1);
-		return (len);
-	}
-	while (n > 0)
-	{
-		buffer[len++] = (n % 10) + '0';
-		n /= 10;
-	}
-	while (len > 0)
-	{
-		len--;
-		write(fd, &buffer[len], 1);
+		if (n < 0)
+		{
+			len += ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		if (n >= 10)
+		{
+			len += ft_putnbr_fd(n / 10, fd);
+		}
+		c = (n % 10) + '0';
+		len += ft_putchar_fd(c, fd);
 	}
 	return (len);
 }
