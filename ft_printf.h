@@ -6,7 +6,7 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:56:33 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/25 10:54:35 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:30:20 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 int	ft_putchar_fd(char c, int fd);
 int	ft_putstr_fd(char *s, int fd);
 int	ft_putnbr_fd(int n, int fd);
+int	ft_strlen(const char *str);
 int	ft_unsnbr(unsigned int n, int fd);
 int	ft_lhex(unsigned int n, int fd);
 int	ft_uhex(unsigned int n, int fd);
-int	ft_putptr(void *ptr, int fd);
+int	ft_putptr(void *ptr);
 int	ft_format(const char format, va_list args, int fd);
 int	ft_printf(const char *format, ...);
 #endif

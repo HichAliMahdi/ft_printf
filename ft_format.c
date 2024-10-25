@@ -6,7 +6,7 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:39:35 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/25 10:53:22 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:23:12 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_format(const char format, va_list args, int fd)
 
 	len = 0;
 	if (format == 'p')
-		len += ft_putptr(va_arg(args, void *), fd);
+		len += ft_putptr(va_arg(args, void *));
 	else if (format == 'd' || format == 'i'
 		|| format == 'u' || format == 'x'
 		|| format == 'X')
