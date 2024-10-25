@@ -6,59 +6,78 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:20:40 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/25 10:53:39 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:00:34 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_ptr_len(uintptr_t num)
+int	get_hex_length(unsigned long addr)
 {
-	int	len;
+	int	hex_len;
 
-	len = 0;
-	if (num == 0)
+	hex_len = 0;
+	if (addr == 0)
 		return (1);
-	while (num != 0)
+	while (addr > 0)
 	{
-		len++;
-		num = num / 16;
+		addr /= 16;
+		hex_len++;
 	}
-	return (len);
+	return (hex_len);
 }
 
-void	ft_put_ptr(uintptr_t num, int fd)
+void	ft_ultoa_base(unsigned long num, char *str, int base)
 {
-	if (num >= 16)
+	char	*digits;
+	int		i;
+	int		j;
+	char	temp[20];
+
+	i = 0;
+	digits = "0123456789abcdef";
+	if (num == 0)
 	{
-		ft_put_ptr(num / 16, fd);
-		ft_put_ptr(num % 16, fd);
+		str[0] = '0';
+		str[1] = '\0';
+		return ;
 	}
-	else
+	while (num)
 	{
-		if (num <= 9)
-			ft_putchar_fd((num + '0'), fd);
-		else
-			ft_putchar_fd((num - 10 + 'a'), fd);
+		temp[i++] = digits[num % base];
+		num /= base;
 	}
+	j = 0;
+	while (i > 0)
+	{
+		str[j++] = temp[--i];
+	}
+	str[j] = '\0';
+}
+
+void	hex_pointer(unsigned long addr, int fd)
+{
+	char	*hex_str;
+
+	hex_str = malloc((get_hex_length(addr) + 1) * sizeof(char));
+	if (!hex_str)
+		return ;
+	ft_ultoa_base(addr, hex_str, 16);
+	ft_putstr_fd(hex_str, fd);
+	free(hex_str);
 }
 
 int	ft_putptr(void *ptr, int fd)
 {
-	uintptr_t	addr;
-	int			print_length;
+	unsigned long	addr;
 
-	addr = (uintptr_t)ptr;
-	print_length = 0;
-	print_length += write(fd, "0x", 2);
+	addr = (unsigned long)ptr;
+	ft_putstr_fd("0x", fd);
 	if (addr == 0)
 	{
-		print_length += write(fd, "0", 1);
+		ft_putstr_fd("0", fd);
+		return (3);
 	}
-	else
-	{
-		ft_put_ptr(addr, fd);
-		print_length += ft_ptr_len(addr);
-	}
-	return (print_length);
+	hex_pointer(addr, fd);
+	return (get_hex_length(addr) + 2);
 }
