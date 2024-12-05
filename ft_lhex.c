@@ -6,80 +6,52 @@
 /*   By: hali-mah <hali-mah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:05:06 by hali-mah          #+#    #+#             */
-/*   Updated: 2024/10/24 12:43:25 by hali-mah         ###   ########.fr       */
+/*   Updated: 2024/12/05 20:57:10 by hali-mah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_hex_length(unsigned int n)
+static void	reverse_str(char *str, int len)
 {
-	int	len;
+	int		i;
+	char	temp;
 
-	len = 0;
-	if (n == 0)
+	i = 0;
+	while (i < len / 2)
 	{
-		return (1);
-	}
-	while (n > 0)
-	{
-		n /= 16;
-		len++;
-	}
-	return (len);
-}
-
-static void	fill_hex_result(unsigned int n, char *result, int len, char *hex)
-{
-	while (n > 0)
-	{
-		result[--len] = hex[n % 16];
-		n /= 16;
-	}
-}
-
-static void	write_hex_result(char *result, unsigned int n, int fd)
-{
-	int	i;
-
-	if (n == 0)
-	{
-		ft_putchar_fd('0', fd);
-	}
-	else
-	{
-		i = 0;
-		while (result[i] != '\0')
-		{
-			ft_putchar_fd(result[i], fd);
-			i++;
-		}
+		temp = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = temp;
+		i++;
 	}
 }
 
 int	ft_lhex(unsigned int n, int fd)
 {
 	char	*hex;
+	char	result[9];
 	int		len;
-	char	*result;
+	int		i;
 
 	hex = "0123456789abcdef";
-	len = get_hex_length(n);
-	result = malloc((len + 1) * sizeof(char));
-	if (!result)
+	if (n == 0)
+		return (ft_putchar_fd('0', fd));
+	len = 0;
+	while (n > 0)
 	{
-		return (-1);
+		result[len] = hex[n % 16];
+		n /= 16;
+		len++;
 	}
 	result[len] = '\0';
-	if (n == 0)
+	reverse_str(result, len);
+	i = 0;
+	while (i < len)
 	{
-		result[0] = '0';
+		if (ft_putchar_fd(result[i], fd) == -1)
+			return (-1);
+		i++;
 	}
-	else
-	{
-		fill_hex_result(n, result, len, hex);
-	}
-	write_hex_result(result, n, fd);
-	free(result);
 	return (len);
 }
